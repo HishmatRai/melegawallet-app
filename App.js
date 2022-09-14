@@ -1,8 +1,8 @@
 import { useEffect, useCallback } from "react";
-import { SafeAreaView, Text, View, StyleSheet, StatusBar } from "react-native";
+import { SafeAreaView, StyleSheet, StatusBar } from "react-native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-// import Navigation from "./src/config/navigation";
+import Navigation from "./src/config/navigation";
 import theme from "./theme";
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -32,7 +32,7 @@ export default function App() {
         backgroundColor={theme.black}
         translucent={false}
       />
-      {/* <Navigation /> */}
+      <Navigation />
     </SafeAreaView>
   );
 }
@@ -40,8 +40,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.black,
-  },
-  fsdfsfs: {
-    color: "#fff",
   },
 });
