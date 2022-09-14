@@ -4,7 +4,7 @@ import theme from "../../../theme";
 import { WithLocalSvg } from "react-native-svg";
 // components
 import { Button } from "./../../components";
-const Select65 = (props) => {
+const Select = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -61,4 +61,4 @@ let styles = StyleSheet.create({
     marginTop: 20,
   },
 });
-export default Select65;
+export default Select;

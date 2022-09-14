@@ -7,8 +7,22 @@ const Button = (props) => {
       style={[
         styles.button,
         {
-          backgroundColor: props.type === 1 ? theme.primary : theme.black,
-          borderColor: props.type === 1 ? theme.primary : theme.white,
+          backgroundColor:
+            props.type === 1
+              ? theme.primary
+              : props.type === 2
+              ? theme.black
+              : props.type === 3
+              ? theme.primaryLight
+              : theme.black,
+          borderColor:
+            props.type === 1
+              ? theme.primary
+              : props.type === 2
+              ? theme.white
+              : props.type === 3
+              ? theme.primaryLight
+              : theme.primary,
         },
       ]}
       onPress={props.onPress}
@@ -17,7 +31,14 @@ const Button = (props) => {
         style={[
           styles.buttonText,
           {
-            color: props.type === 1 ? theme.black : theme.white,
+            color:
+              props.type === 1
+                ? theme.black
+                : props.type === 2
+                ? theme.white
+                : props.type === 3
+                ? theme.black
+                : theme.white,
           },
         ]}
       >

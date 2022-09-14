@@ -2,7 +2,13 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // screens
-import { Select, CreateWallet, RecoveryPhase } from "./../../screens";
+import {
+  Select,
+  CreateWallet,
+  RecoveryPhase,
+  Option,
+  CardPair,
+} from "./../../screens";
 const Stack = createNativeStackNavigator();
 export default function Navigation() {
   return (
@@ -31,6 +37,26 @@ export default function Navigation() {
         <Stack.Screen
           name="RecoveryPhase"
           component={RecoveryPhase}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+        <Stack.Screen
+          name="Option"
+          component={Option}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+        <Stack.Screen
+          name="CardPair"
+          component={CardPair}
           options={{
             headerShown: false,
             presentation: "card",
