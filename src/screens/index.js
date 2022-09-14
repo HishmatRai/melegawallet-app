@@ -1,3 +1,4 @@
 import Select from "./select";
 import CreateWallet from "./create-wallet";
-export { Select, CreateWallet };
+import RecoveryPhase from "./recovery-phase";
+export { Select, CreateWallet, RecoveryPhase };

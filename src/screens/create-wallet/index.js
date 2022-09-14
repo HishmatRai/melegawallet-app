@@ -5,12 +5,13 @@ import {
   StyleSheet,
   View,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import theme from "../../../theme";
 // components
 import { Input, Button } from "./../../components";
 import { Entypo } from "@expo/vector-icons";
-const CreateWallet = () => {
+const CreateWallet = (props) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordShow, setPasswordShow] = useState(false);
@@ -21,43 +22,51 @@ const CreateWallet = () => {
     <SafeAreaView style={styles.container}>
       <View>
         <Text style={styles.heading}>Create Wallet</Text>
-        <Input
-          placeholder="Wallet Name"
-          value={name}
-          onChangeText={(name) => setName(name)}
-        />
-        <Input
-          type="password"
-          placeholder="Password"
-          value={password}
-          show={passwordShow}
-          showHandler={() => setPasswordShow(!passwordShow)}
-          onChangeText={(password) => setPassword(password)}
-        />
-        <Input
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          show={showConfirmPassword}
-          showHandler={() => setShowConfirmPassword(!showConfirmPassword)}
-          onChangeText={(confirmPassword) =>
-            setConfirmPassword(confirmPassword)
-          }
-        />
-        <View style={styles.checkBoxMain}>
-          <TouchableOpacity
-            style={styles.checkBox}
-            onPress={() => setCheckBox(!checkBox)}
-          >
-            {checkBox && <Entypo name="check" size={15} color={theme.white} />}
-          </TouchableOpacity>
-          <Text style={styles.checkBoxText}>
-            By clicking on Create Wallet Button, you are agree to our{" "}
-            <Text style={styles.terms}>Terms and Conditions</Text>
-          </Text>
-        </View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Input
+            placeholder="Wallet Name"
+            value={name}
+            onChangeText={(name) => setName(name)}
+          />
+          <Input
+            type="password"
+            placeholder="Password"
+            value={password}
+            show={passwordShow}
+            showHandler={() => setPasswordShow(!passwordShow)}
+            onChangeText={(password) => setPassword(password)}
+          />
+          <Input
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            show={showConfirmPassword}
+            showHandler={() => setShowConfirmPassword(!showConfirmPassword)}
+            onChangeText={(confirmPassword) =>
+              setConfirmPassword(confirmPassword)
+            }
+          />
+          <View style={styles.checkBoxMain}>
+            <TouchableOpacity
+              style={styles.checkBox}
+              onPress={() => setCheckBox(!checkBox)}
+            >
+              {checkBox && (
+                <Entypo name="check" size={15} color={theme.white} />
+              )}
+            </TouchableOpacity>
+            <Text style={styles.checkBoxText}>
+              By clicking on Create Wallet Button, you are agree to our{" "}
+              <Text style={styles.terms}>Terms and Conditions</Text>
+            </Text>
+          </View>
+        </ScrollView>
       </View>
-      <Button type={1} buttonTitle="Create Wallet" />
+      <Button
+        type={1}
+        buttonTitle="Create Wallet"
+        onPress={() => props.navigation.navigate("RecoveryPhase")}
+      />
     </SafeAreaView>
   );
 };
