@@ -6,7 +6,10 @@ import Navigation from "./src/config/navigation";
 import theme from "./theme";
 export default function App() {
   const [fontsLoaded] = useFonts({
+    "Inter-Bold": require("./assets/fonts/Inter-Bold.ttf"),
     "Inter-Regular": require("./assets/fonts/Inter-Regular.ttf"),
+    "Inter-Medium": require("./assets/fonts/Inter-Medium.ttf"),
+    "Inter-SemiBold": require("./assets/fonts/Inter-SemiBold.ttf"),
   });
   useEffect(() => {
     async function prepare() {

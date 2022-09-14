@@ -1,17 +1,29 @@
 import React from "react";
-import { SafeAreaView, Text, StyleSheet } from "react-native";
+import { SafeAreaView, Text, StyleSheet, View } from "react-native";
 import theme from "../../../theme";
 import { WithLocalSvg } from "react-native-svg";
+// components
+import { Button } from "./../../components";
 const Select65 = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{ backgroundColor: "white" }}>Select </Text>
-      <WithLocalSvg
-        asset={require("./../../../assets/svg/logo.svg")}
-        width={100}
-        height={100}
-        fill={"#fff"}
-      />
+      <View>
+        <WithLocalSvg
+          asset={require("./../../../assets/svg/logo.svg")}
+          width={76}
+          height={76}
+          fill={"#fff"}
+        />
+        <Text style={styles.heading}>Secure Crypto</Text>
+        <Text style={styles.subHeading}>Wallet</Text>
+        <Text style={styles.description}>
+          We make it easy to secure your digital{"\n"}assests.
+        </Text>
+      </View>
+      <View>
+        <Button type={1} buttonTitle="Create a new wallet" />
+        <Button type={2} buttonTitle="I already have a wallet" />
+      </View>
     </SafeAreaView>
   );
 };
@@ -19,6 +31,25 @@ let styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.black,
+    padding: 20,
+    paddingVertical: 40,
+    justifyContent: "space-between",
+  },
+  heading: {
+    color: theme.primary,
+    fontSize: 40,
+    fontFamily: theme.bold,
+    marginTop: 40,
+  },
+  subHeading: {
+    color: theme.white,
+    fontSize: 40,
+    fontFamily: theme.medium,
+  },
+  description: {
+    color: theme.white,
+    fontSize: 14,
+    fontFamily: theme.semiBold,
   },
 });
 export default Select65;
