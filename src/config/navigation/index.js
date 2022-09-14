@@ -8,13 +8,14 @@ import {
   RecoveryPhase,
   Option,
   CardPair,
+  QrCodeCamera
 } from "./../../screens";
 const Stack = createNativeStackNavigator();
 export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Select"
           component={Select}
           options={{
@@ -57,6 +58,16 @@ export default function Navigation() {
         <Stack.Screen
           name="CardPair"
           component={CardPair}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        /> */}
+          <Stack.Screen
+          name="QrCodeCamera"
+          component={QrCodeCamera}
           options={{
             headerShown: false,
             presentation: "card",

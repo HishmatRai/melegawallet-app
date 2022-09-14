@@ -1,31 +1,47 @@
-import React, {Component} from 'react';
-
+import React, { useState, useEffect } from "react";
 import {
-  View,
-  Dimensions,
+  Image,
   Text,
+  View,
+  StyleSheet,
+  Button,
   StatusBar,
   TouchableOpacity,
-} from 'react-native';
-import QRCodeScanner from 'react-native-qrcode-scanner';
-import Icon from 'react-native-vector-icons/Ionicons';
-import * as Animatable from 'react-native-animatable';
+  SafeAreaView,
+} from "react-native";
+import { BarCodeScanner } from "expo-barcode-scanner";
+import Constants from "expo-constants";
+import theme from "../../../theme";
+import { Dimensions } from "react-native";
+import * as Animatable from "react-native-animatable";
+import { AntDesign } from "@expo/vector-icons";
+const { width } = Dimensions.get("window");
+const qrSize = width * 0.7;
+const SCREEN_HEIGHT = Dimensions.get("window").height;
+const SCREEN_WIDTH = Dimensions.get("window").width;
+export default function App() {
+  const [hasPermission, setHasPermission] = useState(null);
+  const [scanned, setScanned] = useState(false);
 
-const SCREEN_HEIGHT = Dimensions.get('window').height;
-const SCREEN_WIDTH = Dimensions.get('window').width;
+  useEffect(() => {
+    (async () => {
+      const { status } = await BarCodeScanner.requestPermissionsAsync();
+      setHasPermission(status === "granted");
+    })();
+  }, []);
 
-console.disableYellowBox = true;
+  const handleBarCodeScanned = ({ type, data }) => {
+    setScanned(true);
+    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+  };
 
-class QrCodeCamera extends Component {
-  onSuccess(e) {
-    // alert(e);
-    // console.log('==========================', e.rawData);
-    setTimeout(() => {
-      this.props.navigation.navigate('QrResult', e.rawData);
-    }, 2000);
+  if (hasPermission === null) {
+    return <Text>Requesting for camera permission</Text>;
   }
-
-  makeSlideOutTranslation(translationType, fromValue) {
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+  const makeSlideOutTranslation = (translationType, fromValue) => {
     return {
       from: {
         [translationType]: SCREEN_WIDTH * -0.18,
@@ -34,82 +50,107 @@ class QrCodeCamera extends Component {
         [translationType]: fromValue,
       },
     };
-  }
+  };
+  return (
+    <SafeAreaView style={styles.container}>
+      <BarCodeScanner
+        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+        style={StyleSheet.absoluteFillObject}
+      >
+        <View style={styles.rectangleContainer}>
+          <View style={styles.header}>
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+              {/* <Icon name="chevron-back" size={22} color={'#fff'} /> */}
+            </TouchableOpacity>
+            <Text style={styles.headerTitle}>Scan QR code</Text>
+            <View />
+          </View>
+          <View style={styles.topOverlay}></View>
 
-  render() {
-    return (
-      <QRCodeScanner
-        showMarker
-        onRead={this.onSuccess.bind(this)}
-        cameraStyle={{height: SCREEN_HEIGHT}}
-        customMarker={
-          <View style={styles.rectangleContainer}>
-            <StatusBar
-              hidden={false}
-              backgroundColor="#000"
-              translucent={false}
-              barStyle="light-content"
-            />
-            <View style={styles.header}>
-              <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-                <Icon name="chevron-back" size={22} color={'#fff'} />
-              </TouchableOpacity>
-              <Text style={styles.headerTitle}>Scan QR code</Text>
-              <View />
-            </View>
-            <View style={styles.topOverlay}></View>
+          <View style={{ flexDirection: "row" }}>
+            <View style={styles.leftAndRightOverlay} />
 
-            <View style={{flexDirection: 'row'}}>
-              <View style={styles.leftAndRightOverlay} />
-
-              <View style={styles.rectangle}>
-                <Icon
+            <View style={styles.rectangle}>
+              {/* <Icon
                   name="ios-qr-scanner"
                   size={SCREEN_WIDTH * 0.73}
                   color={'transparent'}
-                />
-                <Animatable.View
-                  style={styles.scanBar}
-                  direction="alternate-reverse"
-                  iterationCount="infinite"
-                  duration={1700}
-                  easing="linear"
-                  animation={this.makeSlideOutTranslation(
-                    'translateY',
-                    SCREEN_WIDTH * -0.54,
-                  )}
-                />
-              </View>
-
-              <View style={styles.leftAndRightOverlay} />
+                /> */}
+              <AntDesign
+                name="scan1"
+                size={SCREEN_WIDTH * 0.73}
+                color="transparent"
+              />
+              <Animatable.View
+                style={styles.scanBar}
+                direction="alternate-reverse"
+                iterationCount="infinite"
+                duration={1700}
+                easing="linear"
+                animation={makeSlideOutTranslation(
+                  "translateY",
+                  SCREEN_WIDTH * -0.54
+                )}
+              />
             </View>
 
-            <View style={styles.bottomOverlay} />
+            <View style={styles.leftAndRightOverlay} />
           </View>
-        }
-      />
-    );
-  }
-}
 
-const overlayColor = 'rgba(0,0,0,0.5)'; // this gives us a black color with a 50% transparency
+          <View style={styles.bottomOverlay} />
+        </View>
+      </BarCodeScanner>
+    </SafeAreaView>
+  );
+}
+const overlayColor = "rgba(0,0,0,0.5)"; // this gives us a black color with a 50% transparency
 
 const rectDimensions = SCREEN_WIDTH * 0.65; // this is equivalent to 255 from a 393 device width
 const rectBorderWidth = SCREEN_WIDTH * 0.005; // this is equivalent to 2 from a 393 device width
-const rectBorderColor = 'white';
+const rectBorderColor = "white";
 
 const scanBarWidth = SCREEN_WIDTH * 0.46; // this is equivalent to 180 from a 393 device width
 const scanBarHeight = SCREEN_WIDTH * 0.0025; //this is equivalent to 1 from a 393 device width
-const scanBarColor = '#22ff00';
+const scanBarColor = "#22ff00";
 
-const iconScanColor = 'blue';
-
-const styles = {
+const iconScanColor = "blue";
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor:theme.black,
+    borderWidth:2,
+    borderColor:theme.primary
+  },
+  fsd:{
+    backgroundColor:"transparent",
+    height:SCREEN_HEIGHT
+  },
+  qr: {
+    marginTop: "20%",
+    marginBottom: "20%",
+    width: qrSize,
+    height: qrSize,
+  },
+  description: {
+    fontSize: width * 0.09,
+    marginTop: "10%",
+    textAlign: "center",
+    width: "70%",
+    color: "white",
+  },
+  cancel: {
+    fontSize: width * 0.05,
+    textAlign: "center",
+    width: "70%",
+    color: "white",
+  },
   rectangleContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "transparent",
+    borderWidth:2,
+    borderColor:theme.gray
   },
 
   rectangle: {
@@ -117,9 +158,9 @@ const styles = {
     width: rectDimensions,
     borderWidth: rectBorderWidth,
     borderColor: rectBorderColor,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "transparent",
   },
 
   topOverlay: {
@@ -127,8 +168,8 @@ const styles = {
     height: SCREEN_WIDTH,
     width: SCREEN_WIDTH,
     backgroundColor: overlayColor,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   bottomOverlay: {
@@ -151,18 +192,13 @@ const styles = {
     backgroundColor: scanBarColor,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     width: SCREEN_WIDTH,
-    paddingHorizontal: 20,
-    justifyContent: 'space-between',
-    paddingTop: 15,
-    backgroundColor: overlayColor,
+    justifyContent: "space-between",
   },
   headerTitle: {
-    color: 'white',
+    color: "white",
     fontSize: 17,
   },
-};
-
-export default QrCodeCamera;
+});

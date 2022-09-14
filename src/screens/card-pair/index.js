@@ -4,7 +4,7 @@ import theme from "./../../../theme";
 import { WithLocalSvg } from "react-native-svg";
 // components
 import { Button } from "./../../components";
-const CardPair = () => {
+const CardPair = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -26,7 +26,7 @@ const CardPair = () => {
       </View>
       <View>
         <Text style={styles.or}>-OR-</Text>
-        <Button type={1} buttonTitle="Login" />
+        <Button type={1} buttonTitle="Scan QR Code" onPress={()=> props.navigation.navigate("QrCodeCamera")} />
       </View>
     </SafeAreaView>
   );
