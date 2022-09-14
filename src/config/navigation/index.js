@@ -1,18 +1,32 @@
 import * as React from "react";
-import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // screens
-import { Select } from "./../../screens";
+import { Select, CreateWallet } from "./../../screens";
 const Stack = createNativeStackNavigator();
-export default function App() {
+export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
           name="Select"
           component={Select}
-          options={{ headerShown: false }}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+        <Stack.Screen
+          name="CreateWallet"
+          component={CreateWallet}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -4,7 +4,7 @@ import theme from "../../../theme";
 import { WithLocalSvg } from "react-native-svg";
 // components
 import { Button } from "./../../components";
-const Select65 = () => {
+const Select65 = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -21,8 +21,14 @@ const Select65 = () => {
         </Text>
       </View>
       <View>
-        <Button type={1} buttonTitle="Create a new wallet" />
-        <Button type={2} buttonTitle="I already have a wallet" />
+        <Button
+          type={1}
+          buttonTitle="Create a new wallet"
+          onPress={() => props.navigation.navigate("CreateWallet")}
+        />
+        <View style={styles.button}>
+          <Button type={2} buttonTitle="I already have a wallet" />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -50,6 +56,9 @@ let styles = StyleSheet.create({
     color: theme.white,
     fontSize: 14,
     fontFamily: theme.semiBold,
+  },
+  button: {
+    marginTop: 20,
   },
 });
 export default Select65;

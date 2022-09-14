@@ -1,2 +1,3 @@
 import Select from "./select";
-export { Select };
+import CreateWallet from "./create-wallet";
+export { Select, CreateWallet };

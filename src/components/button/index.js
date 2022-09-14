@@ -6,10 +6,23 @@ const Button = (props) => {
     <TouchableOpacity
       style={[
         styles.button,
-        { backgroundColor: props.type === 1 ? theme.primary : theme.black ,b},
+        {
+          backgroundColor: props.type === 1 ? theme.primary : theme.black,
+          borderColor: props.type === 1 ? theme.primary : theme.white,
+        },
       ]}
+      onPress={props.onPress}
     >
-      <Text style={styles.buttonText}>{props.buttonTitle}</Text>
+      <Text
+        style={[
+          styles.buttonText,
+          {
+            color: props.type === 1 ? theme.black : theme.white,
+          },
+        ]}
+      >
+        {props.buttonTitle}
+      </Text>
     </TouchableOpacity>
   );
 };
