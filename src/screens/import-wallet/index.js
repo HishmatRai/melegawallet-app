@@ -19,6 +19,7 @@ const ImportWallet = (props) => {
   const [checkBox, setCheckBox] = useState(false);
   return (
     <SafeAreaView style={styles.container}>
+        <View style={styles.containerInnner}>
       <View>
         <Text style={styles.heading}>Import Wallet</Text>
         <Text style={styles.subHeading}>Import by Memonic phrase</Text>
@@ -66,6 +67,7 @@ const ImportWallet = (props) => {
         buttonTitle="Import Now"
         onPress={() => props.navigation.navigate("TabStack")}
       />
+      </View>
     </SafeAreaView>
   );
 };
@@ -73,9 +75,14 @@ let styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.black,
-    padding: 20,
-    paddingTop: 40,
+  },
+  containerInnner: {
+    display: "flex",
+    flex: 1,
+    flexDirection: "column",
     justifyContent: "space-between",
+    margin: 20,
+    marginVertical: 40,
   },
   heading: {
     color: theme.primary,

@@ -14,46 +14,48 @@ import { Ionicons } from "@expo/vector-icons";
 const Option = (props) => {
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <View style={styles.headerMain}>
-          <WithLocalSvg
-            asset={require("./../../../assets/svg/logo.svg")}
-            width={76}
-            height={76}
-            fill={"#fff"}
-          />
-          <TouchableOpacity
-            style={styles.closeButton}
-            onPress={() => props.navigation.goBack()}
-          >
-            <Ionicons name="close" size={20} color={theme.white} />
-          </TouchableOpacity>
+      <View style={styles.containerInnner}>
+        <View>
+          <View style={styles.headerMain}>
+            <WithLocalSvg
+              asset={require("./../../../assets/svg/logo.svg")}
+              width={76}
+              height={76}
+              fill={"#fff"}
+            />
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => props.navigation.goBack()}
+            >
+              <Ionicons name="close" size={20} color={theme.white} />
+            </TouchableOpacity>
+          </View>
+          <Text style={styles.heading}>Secure Crypto</Text>
+          <Text style={styles.subHeading}>Wallet</Text>
+          <Text style={styles.description}>
+            We made it easy to secure your digital assets.
+          </Text>
         </View>
-        <Text style={styles.heading}>Secure Crypto</Text>
-        <Text style={styles.subHeading}>Wallet</Text>
-        <Text style={styles.description}>
-          We made it easy to secure your digital assets.
-        </Text>
-      </View>
-      <View>
-        <Button
-          type={1}
-          buttonTitle="Pair"
-          onPress={() => props.navigation.navigate("CardPair")}
-        />
-        <View style={styles.button}>
+        <View>
           <Button
-            type={3}
-            buttonTitle="Import Wallet"
-            onPress={() => props.navigation.navigate("ImportWallet")}
+            type={1}
+            buttonTitle="Pair"
+            onPress={() => props.navigation.navigate("CardPair")}
           />
-        </View>
-        <View style={styles.button}>
-          <Button
-            type={4}
-            buttonTitle="Login"
-            onPress={() => props.navigation.navigate("Login")}
-          />
+          <View style={styles.button}>
+            <Button
+              type={3}
+              buttonTitle="Import Wallet"
+              onPress={() => props.navigation.navigate("ImportWallet")}
+            />
+          </View>
+          <View style={styles.button}>
+            <Button
+              type={4}
+              buttonTitle="Login"
+              onPress={() => props.navigation.navigate("Login")}
+            />
+          </View>
         </View>
       </View>
     </SafeAreaView>
@@ -63,9 +65,14 @@ let styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.black,
-    padding: 20,
-    paddingVertical: 40,
+  },
+  containerInnner: {
+    display: "flex",
+    flex: 1,
+    flexDirection: "column",
     justifyContent: "space-between",
+    margin: 20,
+    marginVertical: 40,
   },
   headerMain: {
     flexDirection: "row",

@@ -32,46 +32,49 @@ const RecoveryPhase = (props) => {
   ];
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <View style={styles.icon}>
-          <WithLocalSvg
-            asset={require("./../../../assets/svg/check.svg")}
-            width={74}
-            height={74}
-            fill={"#000"}
-          />
-        </View>
-        <Text style={styles.heading}>Wallet Created Successfully</Text>
-        <Text style={styles.description}>
-          Anyone with your mnemonic phrase can access all your assests. Please,
-          keep the information to yourself. Don’t save it on your phone.
-        </Text>
-        <View style={styles.copyBox}>
-          {CopyText.map((v, i) => {
-            return (
-              <Text style={styles.copyText} key={i}>
-                {v}
-              </Text>
-            );
-          })}
-          <View style={styles.copyButtonMain}>
-            <TouchableOpacity style={styles.copyButton}>
-              <Feather name="copy" size={20} color={theme.black} />
-              <Text style={styles.copyButtonText}>Copy</Text>
-            </TouchableOpacity>
+      <View style={styles.containerInnner}>
+        <View>
+          <View style={styles.icon}>
+            <WithLocalSvg
+              asset={require("./../../../assets/svg/check.svg")}
+              width={74}
+              height={74}
+              fill={"#000"}
+            />
           </View>
+          <Text style={styles.heading}>Wallet Created Successfully</Text>
+          <Text style={styles.description}>
+            Anyone with your mnemonic phrase can access all your assests.
+            Please, keep the information to yourself. Don’t save it on your
+            phone.
+          </Text>
+          <View style={styles.copyBox}>
+            {CopyText.map((v, i) => {
+              return (
+                <Text style={styles.copyText} key={i}>
+                  {v}
+                </Text>
+              );
+            })}
+            <View style={styles.copyButtonMain}>
+              <TouchableOpacity style={styles.copyButton}>
+                <Feather name="copy" size={20} color={theme.black} />
+                <Text style={styles.copyButtonText}>Copy</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <Text style={styles.description}>
+            *Melega wallet will not store your mnemonic on its server and
+            therefore is unable to recover your wallet once it is lost pease,
+            Before activating your high level security.
+          </Text>
         </View>
-        <Text style={styles.description}>
-          *Melega wallet will not store your mnemonic on its server and
-          therefore is unable to recover your wallet once it is lost pease,
-          Before activating your high level security.
-        </Text>
+        <Button
+          type={1}
+          buttonTitle="Login"
+          onPress={() => props.navigation.navigate("Login")}
+        />
       </View>
-      <Button
-        type={1}
-        buttonTitle="Login"
-        onPress={() => props.navigation.navigate("Login")}
-      />
     </SafeAreaView>
   );
 };
@@ -79,8 +82,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.black,
-    padding: 20,
+  },
+  containerInnner: {
+    display: "flex",
+    flex: 1,
+    flexDirection: "column",
     justifyContent: "space-between",
+    margin: 20,
+    marginVertical: 40,
   },
   icon: {
     alignItems: "center",

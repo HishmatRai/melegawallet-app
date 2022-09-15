@@ -54,7 +54,7 @@ const TabStack = (props) => {
               ) : (
                 <Ionicons name="home-outline" size={24} color={theme.black} />
               )}
-              <Text style={[styles.tabTitle]}>home</Text>
+              <Text style={[styles.tabTitle]}>Home</Text>
             </View>
           ),
         }}
@@ -154,7 +154,7 @@ let Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Select"
           component={Select}
           options={{
@@ -163,8 +163,8 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        />
-        <Stack.Screen
+        /> */}
+        {/* <Stack.Screen
           name="CreateWallet"
           component={CreateWallet}
           options={{
@@ -173,8 +173,8 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        />
-        <Stack.Screen
+        /> */}
+        {/* <Stack.Screen
           name="RecoveryPhase"
           component={RecoveryPhase}
           options={{
@@ -183,8 +183,8 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        />
-        <Stack.Screen
+        /> */}
+        {/* <Stack.Screen
           name="Option"
           component={Option}
           options={{
@@ -193,8 +193,8 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        />
-        <Stack.Screen
+        /> */}
+        {/* <Stack.Screen
           name="CardPair"
           component={CardPair}
           options={{
@@ -203,8 +203,8 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        />
-        <Stack.Screen
+        /> */}
+        {/* <Stack.Screen
           name="QrCodeCamera"
           component={QrCodeCamera}
           options={{
@@ -213,8 +213,8 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        />
-        <Stack.Screen
+        /> */}
+        {/* <Stack.Screen
           name="ImportWallet"
           component={ImportWallet}
           options={{
@@ -223,8 +223,8 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        />
-        <Stack.Screen
+        /> */}
+        {/* <Stack.Screen
           name="Login"
           component={Login}
           options={{
@@ -233,7 +233,7 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        />
+        /> */}
         <Stack.Screen
           name="TabStack"
           component={TabStack}
@@ -270,10 +270,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   footballTab: {
-    // backgroundColor: "gray",
-    // height: 40,
-    // borderBottomEndRadius: 150,
-    // borderBottomStartRadius: 150,
     marginTop: -65,
   },
   footballContainer: {
@@ -290,9 +286,9 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 40 / 2,
   },
   tabTitle: {
-    fontSize: 12,
-    fontWeight: "bold",
+    fontSize: 10,
     color: theme.black,
+    fontFamily: theme.medium,
   },
 });
 export default Navigation;

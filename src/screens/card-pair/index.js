@@ -7,26 +7,32 @@ import { Button } from "./../../components";
 const CardPair = (props) => {
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <Text style={styles.heading}>Pair Card Wallet</Text>
-        <Text style={styles.description}>
-          Pair card wallet to use your hardware wallet
-        </Text>
-        <Text style={styles.description}>
-          Please make sure Your Devices Support NFC
-        </Text>
-      </View>
-      <View style={styles.pairIcon}>
-        <WithLocalSvg
-          asset={require("./../../../assets/svg/pair.svg")}
-          width={"100%"}
-          height={"100%"}
-          fill={"#000"}
-        />
-      </View>
-      <View>
-        <Text style={styles.or}>-OR-</Text>
-        <Button type={1} buttonTitle="Scan QR Code" onPress={()=> props.navigation.navigate("QrCodeCamera")} />
+      <View style={styles.containerInnner}>
+        <View>
+          <Text style={styles.heading}>Pair Card Wallet</Text>
+          <Text style={styles.description}>
+            Pair card wallet to use your hardware wallet
+          </Text>
+          <Text style={styles.description}>
+            Please make sure Your Devices Support NFC
+          </Text>
+        </View>
+        <View style={styles.pairIcon}>
+          <WithLocalSvg
+            asset={require("./../../../assets/svg/pair.svg")}
+            width={"100%"}
+            height={"100%"}
+            fill={"#000"}
+          />
+        </View>
+        <View>
+          <Text style={styles.or}>-OR-</Text>
+          <Button
+            type={1}
+            buttonTitle="Scan QR Code"
+            onPress={() => props.navigation.navigate("QrCodeCamera")}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -35,8 +41,14 @@ let styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.black,
-    padding: 20,
+  },
+  containerInnner: {
+    display: "flex",
+    flex: 1,
+    flexDirection: "column",
     justifyContent: "space-between",
+    margin: 20,
+    marginVertical: 40,
   },
   heading: {
     color: theme.primary,
