@@ -46,7 +46,7 @@ const Login = (props) => {
       <Button
         type={1}
         buttonTitle="Login"
-        onPress={() => props.navigation.navigate("Dashboard")}
+        onPress={() => props.navigation.navigate("TabStack")}
       />
     </SafeAreaView>
   );

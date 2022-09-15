@@ -64,7 +64,7 @@ const ImportWallet = (props) => {
       <Button
         type={1}
         buttonTitle="Import Now"
-        onPress={() => props.navigation.navigate("Dashboard")}
+        onPress={() => props.navigation.navigate("TabStack")}
       />
     </SafeAreaView>
   );

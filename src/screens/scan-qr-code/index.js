@@ -19,7 +19,7 @@ let ScanQrCode = (props) => {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    props.navigation.navigate("Dashboard");
+    props.navigation.navigate("TabStack");
   };
 
   if (hasPermission === null) {
