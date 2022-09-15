@@ -11,6 +11,7 @@ export default function App() {
     "Inter-Medium": require("./assets/fonts/Inter-Medium.ttf"),
     "Inter-SemiBold": require("./assets/fonts/Inter-SemiBold.ttf"),
     "Inter-Black": require("./assets/fonts/Inter-Black.ttf"),
+    "Inter-ExtraBold": require("./assets/fonts/Inter-ExtraBold.ttf"),
   });
   useEffect(() => {
     async function prepare() {

@@ -42,10 +42,18 @@ const Option = (props) => {
           onPress={() => props.navigation.navigate("CardPair")}
         />
         <View style={styles.button}>
-          <Button type={3} buttonTitle="Import Wallet" />
+          <Button
+            type={3}
+            buttonTitle="Import Wallet"
+            onPress={() => props.navigation.navigate("ImportWallet")}
+          />
         </View>
         <View style={styles.button}>
-          <Button type={4} buttonTitle="Login" />
+          <Button
+            type={4}
+            buttonTitle="Login"
+            onPress={() => props.navigation.navigate("Login")}
+          />
         </View>
       </View>
     </SafeAreaView>

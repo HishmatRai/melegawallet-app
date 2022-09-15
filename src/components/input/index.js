@@ -17,18 +17,23 @@ const Input = (props) => {
     <View
       style={[
         styles.inputMain,
-        { borderColor: focus ? theme.primary : theme.white },
+        {
+          borderColor: focus ? theme.primary : theme.white,
+          height: props.multiline ? 200 : 55,
+          backgroundColor: props.inputType === 2 ? theme.secondary : theme.black,
+        },
       ]}
     >
       <TextInput
         placeholder={props.placeholder}
         value={props.value}
+        multiline={props.multiline}
         onChangeText={props.onChangeText}
         placeholderTextColor={theme.white}
         secureTextEntry={
           props.type === "password" ? (!props.show ? true : false) : false
         }
-        style={styles.input}
+        style={props.multiline ? styles.textarea : styles.input}
         onFocus={Focushandler}
         onBlur={BlurHandler}
       />
@@ -49,7 +54,6 @@ const Input = (props) => {
 };
 let styles = StyleSheet.create({
   inputMain: {
-    height: 55,
     borderWidth: 1,
     borderRadius: 10,
     paddingHorizontal: 10,
@@ -62,6 +66,14 @@ let styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: theme.regular,
     flex: 1,
+  },
+  textarea: {
+    color: theme.white,
+    fontSize: 18,
+    fontFamily: theme.regular,
+    flex: 1,
+    textAlignVertical: "top",
+    height: 180,
   },
   showPassword: {
     width: 30,

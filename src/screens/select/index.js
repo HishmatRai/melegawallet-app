@@ -27,7 +27,11 @@ const Select = (props) => {
           onPress={() => props.navigation.navigate("CreateWallet")}
         />
         <View style={styles.button}>
-          <Button type={2} buttonTitle="I already have a wallet" />
+          <Button
+            type={2}
+            buttonTitle="I already have a wallet"
+            onPress={() => props.navigation.navigate("Option")}
+          />
         </View>
       </View>
     </SafeAreaView>

@@ -1,6 +1,7 @@
 export default {
   primary: "#F0B90B",
   primaryLight: "#EFE5C7",
+  secondary: "#372F47",
   black: "#000",
   white: "#fff",
   gray: "#C4C4C4",
@@ -10,4 +11,5 @@ export default {
   medium: "Inter-Medium",
   semiBold: "Inter-SemiBold",
   blackFont: "Inter-Black",
+  extraBold: "Inter-ExtraBold",
 };
