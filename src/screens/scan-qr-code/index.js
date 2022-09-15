@@ -15,10 +15,11 @@ import theme from "../../../theme";
 import { Dimensions } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { AntDesign } from "@expo/vector-icons";
-const { width } = Dimensions.get("window");
 const qrSize = width * 0.7;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 export default function App() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
@@ -55,50 +56,46 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        style={StyleSheet.absoluteFillObject}
+        style={{ width: height - 188, height: height, 
+          alignSelf: "center" }}
+
+
       >
         <View style={styles.rectangleContainer}>
-          <View style={styles.header}>
-            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-              {/* <Icon name="chevron-back" size={22} color={'#fff'} /> */}
-            </TouchableOpacity>
-            <Text style={styles.headerTitle}>Scan QR code</Text>
-            <View />
-          </View>
-          <View style={styles.topOverlay}></View>
-
-          <View style={{ flexDirection: "row" }}>
-            <View style={styles.leftAndRightOverlay} />
-
-            <View style={styles.rectangle}>
-              {/* <Icon
-                  name="ios-qr-scanner"
-                  size={SCREEN_WIDTH * 0.73}
-                  color={'transparent'}
-                /> */}
-              <AntDesign
-                name="scan1"
-                size={SCREEN_WIDTH * 0.73}
-                color="transparent"
-              />
-              <Animatable.View
-                style={styles.scanBar}
-                direction="alternate-reverse"
-                iterationCount="infinite"
-                duration={1700}
-                easing="linear"
-                animation={makeSlideOutTranslation(
-                  "translateY",
-                  SCREEN_WIDTH * -0.54
-                )}
-              />
+            <View style={styles.topOverlay}>
+              <Text style={{ fontSize: 30, color: "white" }}>
+                QR CODE SCANNER
+              </Text>
             </View>
 
-            <View style={styles.leftAndRightOverlay} />
-          </View>
+            <View style={{ flexDirection: "row" }}>
+              <View style={styles.leftAndRightOverlay} />
 
-          <View style={styles.bottomOverlay} />
-        </View>
+              <View style={styles.rectangle}>
+                {/* <Icon
+                  name="ios-qr-scanner"
+                  size={SCREEN_WIDTH * 0.73}
+                  color={iconScanColor}
+                /> */}
+                <AntDesign name="scan1" size={24} color="iconScanColor" />
+                <Animatable.View
+                  style={styles.scanBar}
+                  direction="alternate-reverse"
+                  iterationCount="infinite"
+                  duration={1700}
+                  easing="linear"
+                  animation={makeSlideOutTranslation(
+                    "translateY",
+                    SCREEN_WIDTH * -0.54
+                  )}
+                />
+              </View>
+
+              <View style={styles.leftAndRightOverlay} />
+            </View>
+
+            <View style={styles.bottomOverlay} />
+          </View>
       </BarCodeScanner>
     </SafeAreaView>
   );
@@ -119,38 +116,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor:theme.black,
     borderWidth:2,
-    borderColor:theme.primary
-  },
-  fsd:{
-    backgroundColor:"transparent",
-    height:SCREEN_HEIGHT
-  },
-  qr: {
-    marginTop: "20%",
-    marginBottom: "20%",
-    width: qrSize,
-    height: qrSize,
-  },
-  description: {
-    fontSize: width * 0.09,
-    marginTop: "10%",
-    textAlign: "center",
-    width: "70%",
-    color: "white",
-  },
-  cancel: {
-    fontSize: width * 0.05,
-    textAlign: "center",
-    width: "70%",
-    color: "white",
   },
   rectangleContainer: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "transparent",
-    borderWidth:2,
-    borderColor:theme.gray
+    backgroundColor: "transparent"
   },
 
   rectangle: {
@@ -160,7 +131,7 @@ const styles = StyleSheet.create({
     borderColor: rectBorderColor,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "transparent",
+    backgroundColor: "transparent"
   },
 
   topOverlay: {
@@ -169,7 +140,7 @@ const styles = StyleSheet.create({
     width: SCREEN_WIDTH,
     backgroundColor: overlayColor,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
 
   bottomOverlay: {
@@ -177,28 +148,18 @@ const styles = StyleSheet.create({
     height: SCREEN_WIDTH,
     width: SCREEN_WIDTH,
     backgroundColor: overlayColor,
-    paddingBottom: SCREEN_WIDTH * 0.25,
+    paddingBottom: SCREEN_WIDTH * 0.25
   },
 
   leftAndRightOverlay: {
     height: SCREEN_WIDTH * 0.65,
     width: SCREEN_WIDTH,
-    backgroundColor: overlayColor,
+    backgroundColor: overlayColor
   },
 
   scanBar: {
     width: scanBarWidth,
     height: scanBarHeight,
-    backgroundColor: scanBarColor,
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    width: SCREEN_WIDTH,
-    justifyContent: "space-between",
-  },
-  headerTitle: {
-    color: "white",
-    fontSize: 17,
-  },
+    backgroundColor: scanBarColor
+  }
 });
