@@ -6,6 +6,8 @@ export default {
   white: "#fff",
   gray: "#C4C4C4",
   appleColor: "#4DEEAA",
+  red: "#FC1010",
+  green: "#0FCB81",
   bold: "Inter-Bold",
   regular: "Inter-Regular",
   medium: "Inter-Medium",

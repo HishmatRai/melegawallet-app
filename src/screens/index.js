@@ -7,6 +7,7 @@ import QrCodeCamera from "./scan-qr-code";
 import Dashboard from "./dashboard";
 import ImportWallet from "./import-wallet";
 import Login from "./login";
+import Swap from "./swap";
 export {
   Select,
   CreateWallet,
@@ -17,4 +18,5 @@ export {
   Dashboard,
   ImportWallet,
   Login,
+  Swap,
 };
