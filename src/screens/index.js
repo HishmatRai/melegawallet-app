@@ -8,6 +8,7 @@ import Dashboard from "./dashboard";
 import ImportWallet from "./import-wallet";
 import Login from "./login";
 import Swap from "./swap";
+import Wallet from "./wallet";
 export {
   Select,
   CreateWallet,
@@ -19,4 +20,5 @@ export {
   ImportWallet,
   Login,
   Swap,
+  Wallet
 };

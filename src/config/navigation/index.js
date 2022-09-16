@@ -13,7 +13,8 @@ import {
   Dashboard,
   ImportWallet,
   Login,
-  Swap
+  Swap,
+  Wallet
 } from "./../../screens";
 import { View, StyleSheet, Dimensions, Text } from "react-native";
 import {
@@ -123,8 +124,8 @@ const TabStack = (props) => {
         }}
       />
       <Tab.Screen
-        name="Dashboafrd2"
-        component={Dashboard}
+        name="Wallet"
+        component={Wallet}
         options={{
           tabBarShowLabel: false,
           headerShown: false,
