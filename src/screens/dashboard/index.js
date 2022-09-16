@@ -6,33 +6,12 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  Dimensions,
+  ImageBackground,
+  Linking,
 } from "react-native";
 import theme from "../../../theme";
 import { WithLocalSvg } from "react-native-svg";
-const windowWidth = Dimensions.get("window").width;
 const Dashboard = () => {
-  const Slider = [
-    {
-      heading: "MELEGA WALLET",
-      description:
-        "Melega Wallet is one of the most transformative technologies.",
-      active: [true, false, false],
-    },
-    {
-      heading: "MELEGA WALLET",
-      description:
-        "Melega Wallet is one of the most transformative technologies.",
-      active: [false, true, false],
-    },
-    {
-      heading: "MELEGA WALLET",
-      description:
-        "Melega Wallet is one of the most transformative technologies.",
-      active: [false, false, true],
-    },
-  ];
-
   const Services = [
     {
       icon: require("./../../../assets/svg/staking.svg"),
@@ -82,45 +61,31 @@ const Dashboard = () => {
               <Text style={styles.receiveButtonText}>Receive</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.cardMain}>
-            <ScrollView
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              pagingEnabled={true}
+          <TouchableOpacity
+            style={styles.bannerMain}
+            onPress={() => {
+              Linking.openURL("https://t.me/melegacommunity");
+            }}
+          >
+            <ImageBackground
+              source={require("./../../../assets/images/header.png")}
+              style={styles.banner}
+              imageStyle={{ borderRadius: 13}}
+
             >
-              {Slider.map((v, i) => {
-                return (
-                  <View style={styles.card} key={i}>
-                    <View style={styles.cardHeader}>
-                      <WithLocalSvg
-                        asset={require("./../../../assets/svg/logo.svg")}
-                        width={13}
-                        height={13}
-                        fill={"#000"}
-                      />
-                      <Text style={styles.appName}>MelegaFi</Text>
-                    </View>
-                    <Text style={styles.cardHeading}>{v.heading}</Text>
-                    <Text style={styles.cardSubHeading}>LIVE NOW</Text>
-                    <Text style={styles.description}>
-                      Melega Wallet is one of the most transformative
-                      technologies.
-                    </Text>
-                    <View style={styles.dotMain}>
-                      {v.active.map((actveValue, activeIndex) => {
-                        return (
-                          <View
-                            key={activeIndex}
-                            style={actveValue ? styles.activeDot : styles.dot}
-                          />
-                        );
-                      })}
-                    </View>
-                  </View>
-                );
-              })}
-            </ScrollView>
-          </View>
+              <View style={styles.bannerInner}>
+                <Text style={styles.bannerText}>
+                  “Hey Bro Join The Telegram Airdrops!”
+                </Text>
+                <WithLocalSvg
+                  asset={require("./../../../assets/svg/logo.svg")}
+                  width={40}
+                  height={40}
+                  fill={"#000"}
+                />
+              </View>
+            </ImageBackground>
+          </TouchableOpacity>
           <View style={styles.servicesMain}>
             {Services.map((servicesValue, servicesIndex) => {
               return (
@@ -237,66 +202,6 @@ let styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: theme.semiBold,
   },
-  cardMain: {
-    marginTop: 20,
-  },
-  card: {
-    backgroundColor: theme.white,
-    height: 177,
-    borderRadius: 13,
-    padding: 10,
-    width: windowWidth - 40,
-  },
-  cardHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  appName: {
-    color: theme.black,
-    fontSize: 7,
-    fontFamily: theme.semiBold,
-    marginLeft: 5,
-  },
-  cardHeading: {
-    fontSize: 14,
-    color: theme.black,
-    fontFamily: theme.semiBold,
-    marginTop: 20,
-  },
-  cardSubHeading: {
-    color: theme.secondary,
-    fontSize: 23,
-    fontFamily: theme.semiBold,
-  },
-  description: {
-    color: theme.black,
-    fontSize: 10,
-    fontFamily: theme.semiBold,
-    width: "80%",
-    marginTop: 10,
-  },
-  dotMain: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    marginTop: 10,
-    marginRight: 20,
-  },
-  activeDot: {
-    width: 7,
-    height: 7,
-    borderRadius: 7 / 2,
-    backgroundColor: theme.secondary,
-    marginHorizontal: 2,
-  },
-  dot: {
-    width: 7,
-    height: 7,
-    borderRadius: 7 / 2,
-    backgroundColor: theme.secondary,
-    opacity: 0.3,
-    marginHorizontal: 2,
-  },
   servicesMain: {
     marginTop: 30,
     flexDirection: "row",
@@ -365,6 +270,31 @@ let styles = StyleSheet.create({
     fontFamily: theme.blackFont,
     flex: 1,
     textAlign: "left",
+  },
+  bannerMain: {
+    marginTop: 40,
+  },
+  banner: {
+    height: 168,
+    borderRadius: 13,
+    position: "relative",
+  },
+  bannerInner: {
+    flex: 1,
+    position: "absolute",
+    right: 20,
+    height: "100%",
+    paddingVertical: 20,
+    width: 136,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+  },
+  bannerText: {
+    fontSize: 19,
+    color: theme.black,
+    fontFamily: theme.cavolini,
+    marginBottom: 5,
   },
 });
 export default Dashboard;

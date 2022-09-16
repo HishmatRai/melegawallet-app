@@ -12,6 +12,7 @@ export default function App() {
     "Inter-SemiBold": require("./assets/fonts/Inter-SemiBold.ttf"),
     "Inter-Black": require("./assets/fonts/Inter-Black.ttf"),
     "Inter-ExtraBold": require("./assets/fonts/Inter-ExtraBold.ttf"),
+    "Cavolini": require("./assets/fonts/cavolini-regular.ttf"),
   });
   useEffect(() => {
     async function prepare() {

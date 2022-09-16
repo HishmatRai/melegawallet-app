@@ -14,7 +14,13 @@ import {
   ImportWallet,
   Login,
   Swap,
-  Wallet
+  Wallet,
+  Profile,
+  EditWallet,
+  AddressBook,
+  AddressBookSearch,
+  WalletCard,
+  Discovered
 } from "./../../screens";
 import { View, StyleSheet, Dimensions, Text } from "react-native";
 import {
@@ -62,8 +68,8 @@ const TabStack = (props) => {
         }}
       />
       <Tab.Screen
-        name="Dashboard1"
-        component={Dashboard}
+        name="Profile"
+        component={Profile}
         options={{
           tabBarShowLabel: false,
           headerShown: false,
@@ -156,7 +162,7 @@ let Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Select"
           component={Select}
           options={{
@@ -165,8 +171,8 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        /> */}
-        {/* <Stack.Screen
+        />
+        <Stack.Screen
           name="CreateWallet"
           component={CreateWallet}
           options={{
@@ -175,8 +181,8 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        /> */}
-        {/* <Stack.Screen
+        />
+        <Stack.Screen
           name="RecoveryPhase"
           component={RecoveryPhase}
           options={{
@@ -185,8 +191,8 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        /> */}
-        {/* <Stack.Screen
+        />
+        <Stack.Screen
           name="Option"
           component={Option}
           options={{
@@ -195,8 +201,8 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        /> */}
-        {/* <Stack.Screen
+        />
+        <Stack.Screen
           name="CardPair"
           component={CardPair}
           options={{
@@ -205,8 +211,8 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        /> */}
-        {/* <Stack.Screen
+        />
+        <Stack.Screen
           name="QrCodeCamera"
           component={QrCodeCamera}
           options={{
@@ -215,8 +221,8 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        /> */}
-        {/* <Stack.Screen
+        />
+        <Stack.Screen
           name="ImportWallet"
           component={ImportWallet}
           options={{
@@ -225,8 +231,8 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        /> */}
-        {/* <Stack.Screen
+        />
+        <Stack.Screen
           name="Login"
           component={Login}
           options={{
@@ -235,10 +241,60 @@ let Navigation = () => {
             animationTypeForReplace: "pop",
             animation: "slide_from_right",
           }}
-        /> */}
+        />
         <Stack.Screen
           name="TabStack"
           component={TabStack}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+        <Stack.Screen
+          name="EditWallet"
+          component={EditWallet}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+        <Stack.Screen
+          name="AddressBook"
+          component={AddressBook}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+         <Stack.Screen
+          name="AddressBookSearch"
+          component={AddressBookSearch}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+         <Stack.Screen
+          name="WalletCard"
+          component={WalletCard}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+          <Stack.Screen
+          name="Discovered"
+          component={Discovered}
           options={{
             headerShown: false,
             presentation: "card",

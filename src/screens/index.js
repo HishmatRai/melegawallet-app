@@ -9,6 +9,12 @@ import ImportWallet from "./import-wallet";
 import Login from "./login";
 import Swap from "./swap";
 import Wallet from "./wallet";
+import Profile from "./profile";
+import EditWallet from "./edit-wallet";
+import AddressBook from "./address-book";
+import AddressBookSearch from "./addres-book-search";
+import WalletCard from "./wallet-card";
+import Discovered from "./discovered";
 export {
   Select,
   CreateWallet,
@@ -20,5 +26,11 @@ export {
   ImportWallet,
   Login,
   Swap,
-  Wallet
+  Wallet,
+  Profile,
+  EditWallet,
+  AddressBook,
+  AddressBookSearch,
+  WalletCard,
+  Discovered
 };

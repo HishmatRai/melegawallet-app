@@ -14,4 +14,5 @@ export default {
   semiBold: "Inter-SemiBold",
   blackFont: "Inter-Black",
   extraBold: "Inter-ExtraBold",
+  cavolini: "Cavolini",
 };
