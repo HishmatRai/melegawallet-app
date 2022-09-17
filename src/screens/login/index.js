@@ -10,7 +10,6 @@ import {
 import theme from "../../../theme";
 // components
 import { Input, Button } from "./../../components";
-import { Entypo } from "@expo/vector-icons";
 const Login = (props) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");

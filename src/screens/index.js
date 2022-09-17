@@ -4,7 +4,6 @@ import RecoveryPhase from "./recovery-phase";
 import Option from "./option";
 import CardPair from "./card-pair";
 import QrCodeCamera from "./scan-qr-code";
-import Dashboard from "./dashboard";
 import ImportWallet from "./import-wallet";
 import Login from "./login";
 import Swap from "./swap";
@@ -15,6 +14,13 @@ import AddressBook from "./address-book";
 import AddressBookSearch from "./addres-book-search";
 import WalletCard from "./wallet-card";
 import Discovered from "./discovered";
+import BuySell from "./buy-sell";
+import HelpCenter from "./help-center";
+import Security from "./security";
+import FlexibleMining from "./flexible-mining";
+import Send from "./send";
+import DashboardStack from "./dashboard-stack";
+import Liquidity from "./liquidity";
 export {
   Select,
   CreateWallet,
@@ -22,7 +28,6 @@ export {
   Option,
   CardPair,
   QrCodeCamera,
-  Dashboard,
   ImportWallet,
   Login,
   Swap,
@@ -32,5 +37,12 @@ export {
   AddressBook,
   AddressBookSearch,
   WalletCard,
-  Discovered
+  Discovered,
+  BuySell,
+  HelpCenter,
+  Security,
+  FlexibleMining,
+  Send,
+  DashboardStack,
+  Liquidity
 };

@@ -25,11 +25,17 @@ const Discovered = (props) => {
           <Text style={styles.title}>Discovered</Text>
           <View />
         </View>
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity
+          style={styles.card}
+          onPress={() => props.navigation.navigate("FlexibleMining")}
+        >
           <Text style={styles.cardTitle}>Flexible Mining</Text>
           <Entypo name="chevron-right" size={24} color={theme.white} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity
+          style={styles.card}
+          onPress={() => props.navigation.navigate("BuySell")}
+        >
           <Text style={styles.cardTitle}>Buy/Sell</Text>
           <Entypo name="chevron-right" size={24} color={theme.white} />
         </TouchableOpacity>
@@ -44,7 +50,6 @@ let styles = StyleSheet.create({
   },
   containerInner: {
     paddingHorizontal: 20,
-    display: "flex",
     flexDirection: "column",
     flex: 1,
   },
@@ -53,7 +58,7 @@ let styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom:50
+    marginBottom: 50,
   },
   title: {
     color: theme.white,
@@ -68,7 +73,7 @@ let styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 15,
-    marginTop:10
+    marginTop: 10,
   },
   cardTitle: {
     color: theme.white,

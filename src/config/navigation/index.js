@@ -10,7 +10,6 @@ import {
   Option,
   CardPair,
   QrCodeCamera,
-  Dashboard,
   ImportWallet,
   Login,
   Swap,
@@ -20,11 +19,17 @@ import {
   AddressBook,
   AddressBookSearch,
   WalletCard,
-  Discovered
+  Discovered,
+  BuySell,
+  HelpCenter,
+  Security,
+  FlexibleMining,
+  Send,
+  DashboardStack,
+  Liquidity,
 } from "./../../screens";
 import { View, StyleSheet, Dimensions, Text } from "react-native";
 import {
-  AntDesign,
   Ionicons,
   FontAwesome5,
   MaterialCommunityIcons,
@@ -50,8 +55,8 @@ const TabStack = (props) => {
       }}
     >
       <Tab.Screen
-        name="Dashboard"
-        component={Dashboard}
+        name="DashboardStack"
+        component={DashboardStack}
         options={{
           tabBarShowLabel: false,
           headerShown: false,
@@ -87,7 +92,7 @@ const TabStack = (props) => {
       />
       <Tab.Screen
         name="Dastrhboard1"
-        component={Dashboard}
+        component={DashboardStack}
         options={{
           tabBarShowLabel: false,
           headerShown: false,
@@ -272,7 +277,7 @@ let Navigation = () => {
             animation: "slide_from_right",
           }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="AddressBookSearch"
           component={AddressBookSearch}
           options={{
@@ -282,7 +287,7 @@ let Navigation = () => {
             animation: "slide_from_right",
           }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="WalletCard"
           component={WalletCard}
           options={{
@@ -292,9 +297,69 @@ let Navigation = () => {
             animation: "slide_from_right",
           }}
         />
-          <Stack.Screen
+        <Stack.Screen
           name="Discovered"
           component={Discovered}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+        <Stack.Screen
+          name="BuySell"
+          component={BuySell}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+        <Stack.Screen
+          name="HelpCenter"
+          component={HelpCenter}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+        <Stack.Screen
+          name="Security"
+          component={Security}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+        <Stack.Screen
+          name="FlexibleMining"
+          component={FlexibleMining}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+        <Stack.Screen
+          name="Send"
+          component={Send}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+         <Stack.Screen
+          name="Liquidity"
+          component={Liquidity}
           options={{
             headerShown: false,
             presentation: "card",

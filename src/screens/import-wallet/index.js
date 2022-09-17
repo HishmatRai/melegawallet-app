@@ -28,7 +28,7 @@ const ImportWallet = (props) => {
             placeholder="Enter Your Memonic Key"
             multiline={true}
             value={key}
-            onChangeText={(key) => setKey(name)}
+            onChangeText={(key) => setKey(key)}
             inputType={2}
           />
           <Input

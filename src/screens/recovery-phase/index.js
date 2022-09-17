@@ -72,7 +72,7 @@ const RecoveryPhase = (props) => {
         <Button
           type={1}
           buttonTitle="Login"
-          onPress={() => props.navigation.navigate("Login")}
+          onPress={() => props.navigation.navigate("TabStack")}
         />
       </View>
     </SafeAreaView>

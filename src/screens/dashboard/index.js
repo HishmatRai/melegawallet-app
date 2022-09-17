@@ -11,23 +11,27 @@ import {
 } from "react-native";
 import theme from "../../../theme";
 import { WithLocalSvg } from "react-native-svg";
-const Dashboard = () => {
+const Dashboard = (props) => {
   const Services = [
     {
       icon: require("./../../../assets/svg/staking.svg"),
       title: "Staking",
+      path: "Liquidity",
     },
     {
       icon: require("./../../../assets/svg/liquidity.svg"),
       title: "Liquidity",
+      path: "",
     },
     {
       icon: require("./../../../assets/svg/exchange.svg"),
       title: "Exchange",
+      path: "",
     },
     {
       icon: require("./../../../assets/svg/yield-farming.svg"),
       title: "Yield Farming",
+      path: "",
     },
   ];
   const PirceCard = [
@@ -54,10 +58,16 @@ const Dashboard = () => {
           <Text style={styles.heading}>Total Balance</Text>
           <Text style={styles.price}>0.000</Text>
           <View style={styles.headerButton}>
-            <TouchableOpacity style={styles.sendButton}>
+            <TouchableOpacity
+              style={styles.sendButton}
+              onPress={() => props.navigation.navigate("Send")}
+            >
               <Text style={styles.sendButtonText}>Send</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.receiveButton}>
+            <TouchableOpacity
+              style={styles.receiveButton}
+              onPress={() => props.navigation.navigate("Receive")}
+            >
               <Text style={styles.receiveButtonText}>Receive</Text>
             </TouchableOpacity>
           </View>
@@ -70,8 +80,7 @@ const Dashboard = () => {
             <ImageBackground
               source={require("./../../../assets/images/header.png")}
               style={styles.banner}
-              imageStyle={{ borderRadius: 13}}
-
+              imageStyle={{ borderRadius: 13 }}
             >
               <View style={styles.bannerInner}>
                 <Text style={styles.bannerText}>
@@ -92,6 +101,10 @@ const Dashboard = () => {
                 <TouchableOpacity
                   style={styles.servicesCard}
                   key={servicesIndex}
+                  onPress={() =>
+                    servicesValue.path !== "" &&
+                    props.navigation.navigate(servicesValue.path)
+                  }
                 >
                   <WithLocalSvg
                     asset={servicesValue.icon}

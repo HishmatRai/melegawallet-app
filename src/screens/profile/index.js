@@ -30,12 +30,12 @@ const Profile = (props) => {
     {
       icon: require("./../../../assets/svg/help.svg"),
       title: "Help Center (Support)",
-      path: "",
+      path: "HelpCenter",
     },
     {
       icon: require("./../../../assets/svg/security.svg"),
       title: "Security",
-      path: "",
+      path: "Security",
     },
     {
       icon: require("./../../../assets/svg/log-out.svg"),

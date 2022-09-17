@@ -6,12 +6,13 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  TextInput,
 } from "react-native";
 import theme from "../../../theme";
 import { Feather } from "@expo/vector-icons";
 import { WithLocalSvg } from "react-native-svg";
-const Wallet = (props) => {
-  const [priceShow, setPriceShow] = useState(true);
+const Send = (props) => {
+  const [search, setSearch] = useState("");
   const Card = [
     {
       icon: require("./../../../assets/svg/btc.svg"),
@@ -45,35 +46,30 @@ const Wallet = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.containerInnner}>
-        <View>
-          
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => props.navigation.goBack()}>
+            <WithLocalSvg
+              asset={require("./../../../assets/svg/back.svg")}
+              width={23}
+              height={18}
+              fill={"#000"}
+            />
+          </TouchableOpacity>
+          <View style={styles.searchMain}>
+            <Feather name="search" size={24} color={theme.white} />
+            <TextInput
+              placeholder="Search"
+              placeholderTextColor={theme.white}
+              style={styles.input}
+              value={search}
+              onChangeText={(search) => setSearch(search)}
+            />
+          </View>
         </View>
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 20 }}
+          contentContainerStyle={{ paddingBottom: 20, marginTop: 50 }}
         >
-          <Text style={styles.heading}>Total Balance</Text>
-          <View style={styles.priceMain}>
-            <Text style={styles.price}>{priceShow ? "0.000" : "----"}</Text>
-            <TouchableOpacity
-              onPress={() => setPriceShow(!priceShow)}
-              style={styles.showButton}
-            >
-              {priceShow ? (
-                <Feather name="eye" size={20} color={theme.white} />
-              ) : (
-                <Feather name="eye-off" size={20} color={theme.white} />
-              )}
-            </TouchableOpacity>
-          </View>
-          <View style={styles.headerButton}>
-            <TouchableOpacity style={styles.sendButton}>
-              <Text style={styles.sendButtonText}>Send</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.receiveButton}>
-              <Text style={styles.receiveButtonText}>Receive</Text>
-            </TouchableOpacity>
-          </View>
           {Card.map((v, i) => {
             return (
               <View style={styles.card} key={i}>
@@ -98,15 +94,6 @@ const Wallet = (props) => {
               </View>
             );
           })}
-          <Text style={styles.token}>
-            Don’t see your token?{" "}
-            <Text
-              style={styles.importToken}
-              onPress={() => props.navigation.navigate("ImportWallet")}
-            >
-              Import Token
-            </Text>
-          </Text>
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -121,59 +108,6 @@ let styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     marginHorizontal: 20,
-  },
-  heading: {
-    color: theme.white,
-    fontSize: 20,
-    fontFamily: theme.bold,
-    textAlign: "center",
-    marginTop: 30,
-  },
-  priceMain: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  price: {
-    fontSize: 40,
-    fontFamily: theme.bold,
-    color: theme.white,
-  },
-  showButton: {
-    marginLeft: 15,
-  },
-  headerButton: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    marginVertical: 30,
-  },
-  sendButton: {
-    backgroundColor: theme.primary,
-    height: 45,
-    width: "48%",
-    borderRadius: 20,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  sendButtonText: {
-    color: theme.black,
-    fontSize: 18,
-    fontFamily: theme.semiBold,
-  },
-  receiveButton: {
-    height: 45,
-    width: "48%",
-    borderRadius: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 1,
-    borderColor: theme.primary,
-  },
-  receiveButtonText: {
-    color: theme.white,
-    fontSize: 18,
-    fontFamily: theme.semiBold,
   },
   card: {
     backgroundColor: theme.secondary,
@@ -210,15 +144,28 @@ let styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  token: {
+  header: {
+    marginVertical: 20,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  searchMain: {
+    borderWidth: 1,
+    borderColor: theme.white,
+    height: 50,
+    borderRadius: 11,
+    flex: 1,
+    marginLeft: 30,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 15,
+  },
+  input: {
     color: theme.white,
     fontSize: 20,
-    fontFamily: theme.bold,
-    textAlign: "center",
-    marginVertical: 30,
-  },
-  importToken: {
-    color: theme.primary,
+    fontFamily: theme.regular,
+    flex: 1,
+    marginLeft: 15,
   },
 });
-export default Wallet;
+export default Send;
