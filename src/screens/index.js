@@ -23,6 +23,8 @@ import DashboardStack from "./dashboard-stack";
 import Liquidity from "./liquidity";
 import Exchange from "./exchange";
 import Receive from "./receive";
+import Send2 from "./send-2";
+import Transaction from "./transaction";
 export {
   Select,
   CreateWallet,
@@ -48,5 +50,7 @@ export {
   DashboardStack,
   Liquidity,
   Exchange,
-  Receive
+  Receive,
+  Send2,
+  Transaction
 };

@@ -29,6 +29,8 @@ import {
   Liquidity,
   Exchange,
   Receive,
+  Send2,
+  Transaction,
 } from "./../../screens";
 import {
   View,
@@ -48,7 +50,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const width = Dimensions.get("window").width;
 const tabWidth = width / 5;
-const TabStack = ({navigation}) => {
+const TabStack = ({ navigation }) => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -384,6 +386,26 @@ let Navigation = (props) => {
         <Stack.Screen
           name="Exchange"
           component={Exchange}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+        <Stack.Screen
+          name="Send2"
+          component={Send2}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+        <Stack.Screen
+          name="Transaction"
+          component={Transaction}
           options={{
             headerShown: false,
             presentation: "card",

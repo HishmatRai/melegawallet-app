@@ -50,7 +50,7 @@ const Exchange = (props) => {
               <View>
                 <Text style={styles.cardHeading}>Exchange</Text>
                 <Text style={styles.cardSubHeading}>
-                  Add liquidity to receive LP tokens
+                  Trade token in an instant
                 </Text>
               </View>
               <View style={styles.cardHeaderButtonMain}>
@@ -62,7 +62,11 @@ const Exchange = (props) => {
                     fill={"#000"}
                   />
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() =>
+                    props.navigation.navigate("Transaction", "Exchange")
+                  }
+                >
                   <WithLocalSvg
                     asset={require("./../../../assets/svg/clock.svg")}
                     width={21}

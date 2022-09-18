@@ -62,7 +62,9 @@ const Liquidity = (props) => {
                     fill={"#000"}
                   />
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => props.navigation.navigate("Transaction","Liquidity")}
+                >
                   <WithLocalSvg
                     asset={require("./../../../assets/svg/clock.svg")}
                     width={21}

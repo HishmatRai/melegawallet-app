@@ -71,13 +71,20 @@ const Wallet = (props) => {
             >
               <Text style={styles.sendButtonText}>Send</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.receiveButton}  onPress={() => props.navigation.navigate("Receive")}>
+            <TouchableOpacity
+              style={styles.receiveButton}
+              onPress={() => props.navigation.navigate("Receive")}
+            >
               <Text style={styles.receiveButtonText}>Receive</Text>
             </TouchableOpacity>
           </View>
           {Card.map((v, i) => {
             return (
-              <View style={styles.card} key={i}>
+              <TouchableOpacity
+                style={styles.card}
+                key={i}
+                onPress={() => props.navigation.navigate("Send2", v.heading)}
+              >
                 <View style={styles.cardFirstSection}>
                   <View style={[styles.iconMain]}>
                     <WithLocalSvg
@@ -96,7 +103,7 @@ const Wallet = (props) => {
                   <Text style={styles.cardHeading}>{v.heading2}</Text>
                   <Text style={styles.cardPrice}>{v.price2}</Text>
                 </View>
-              </View>
+              </TouchableOpacity>
             );
           })}
           <Text style={styles.token}>

@@ -16,6 +16,7 @@ const AddressBookSearch = (props) => {
   const [search, setSearch] = useState("");
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
+  const [message, setMessage] = useState(false);
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
@@ -43,6 +44,11 @@ const AddressBookSearch = (props) => {
       });
       setFilteredDataSource(newData);
       setSearch(text);
+      if (newData.length === 0) {
+        setMessage(true);
+      } else {
+        setMessage(false);
+      }
     } else {
       // Inserted text is blank
       // Update FilteredDataSource with masterDataSource
@@ -56,7 +62,7 @@ const AddressBookSearch = (props) => {
       // Flat List Item
       <TouchableOpacity
         style={{ paddingVertical: 10 }}
-        onPress={() => props.navigation.navigate("AddressBook",item.title)}
+        onPress={() => props.navigation.navigate("AddressBook", item.title)}
       >
         <Text
           style={styles.itemStyle}
@@ -106,7 +112,7 @@ const AddressBookSearch = (props) => {
             onChangeText={(search) => searchFilterFunction(search)}
           />
         </View>
-        {search === "" ? (
+        {search === "" || message ? (
           <View style={styles.body}>
             <WithLocalSvg
               asset={require("./../../../assets/svg/no-data.svg")}

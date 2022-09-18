@@ -72,7 +72,11 @@ const Send = (props) => {
         >
           {Card.map((v, i) => {
             return (
-              <View style={styles.card} key={i}>
+              <TouchableOpacity
+                style={styles.card}
+                key={i}
+                onPress={() => props.navigation.navigate("Send2", v.heading)}
+              >
                 <View style={styles.cardFirstSection}>
                   <View style={[styles.iconMain]}>
                     <WithLocalSvg
@@ -91,7 +95,7 @@ const Send = (props) => {
                   <Text style={styles.cardHeading}>{v.heading2}</Text>
                   <Text style={styles.cardPrice}>{v.price2}</Text>
                 </View>
-              </View>
+              </TouchableOpacity>
             );
           })}
         </ScrollView>
