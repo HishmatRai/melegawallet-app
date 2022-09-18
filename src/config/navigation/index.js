@@ -12,7 +12,6 @@ import {
   QrCodeCamera,
   ImportWallet,
   Login,
-  Swap,
   Wallet,
   Profile,
   EditWallet,
@@ -25,7 +24,7 @@ import {
   Security,
   FlexibleMining,
   Send,
-  DashboardStack,
+  Dashboard,
   Liquidity,
   Exchange,
   Receive,
@@ -65,8 +64,8 @@ const TabStack = ({ navigation }) => {
       }}
     >
       <Tab.Screen
-        name="DashboardStack"
-        component={DashboardStack}
+        name="Dashboard"
+        component={Dashboard}
         options={{
           tabBarShowLabel: false,
           headerShown: false,
@@ -119,8 +118,8 @@ const TabStack = ({ navigation }) => {
         }}
       />
       <Tab.Screen
-        name="Swap"
-        component={Swap}
+        name="Receive2"
+        component={Receive}
         options={{
           tabBarShowLabel: false,
           headerShown: false,

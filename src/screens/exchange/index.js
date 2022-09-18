@@ -10,16 +10,32 @@ import {
 } from "react-native";
 import theme from "../../../theme";
 import { WithLocalSvg } from "react-native-svg";
-import { Dropdown } from "react-native-element-dropdown";
+import { Dropdown, SelectCountry } from "react-native-element-dropdown";
 import { Entypo } from "@expo/vector-icons";
 const Exchange = (props) => {
   const [price, setPrice] = useState("");
-  let [priceCurrency, setPriceCurrency] = useState("");
   const [price2, setPrice2] = useState("");
   let [priceCurrency2, setPriceCurrency2] = useState("");
+  const [country, setCountry] = useState("1");
+
   const Currency = [
-    { label: "EUR", value: "EUR" },
-    { label: "USD", value: "USD" },
+    {
+      label: "EUR",
+      value: "EUR",
+    },
+    {
+      label: "USD",
+      value: "USD",
+    },
+  ];
+  const local_data = [
+    {
+      value: "1",
+      lable: "BNB",
+      image: {
+        uri: "https://seeklogo.com/images/B/binance-coin-bnb-logo-CD94CC6D31-seeklogo.com.png",
+      },
+    },
   ];
   return (
     <SafeAreaView style={styles.container}>
@@ -87,18 +103,22 @@ const Exchange = (props) => {
               />
               <View style={styles.inputFooter}>
                 <Text style={styles.fees}>0.0</Text>
-                <Dropdown
+                <SelectCountry
                   style={[styles.dropdownMain]}
-                  placeholderStyle={styles.dropdownValue}
-                  selectedTextStyle={styles.dropdownValue}
-                  data={Currency}
-                  maxHeight={250}
-                  labelField="label"
+                  placeholderStyle={[styles.dropdownValue]}
+                  selectedTextStyle={[styles.dropdownValue]}
+                  imageStyle={styles.imageStyle}
+                  activeColor={theme.black}
+                  maxHeight={200}
+                  value={country}
+                  data={local_data}
                   valueField="value"
-                  placeholder="Select  Currency"
-                  value={priceCurrency}
-                  onChange={(item) => {
-                    setPriceCurrency(item.value);
+                  labelField="lable"
+                  imageField="image"
+                  placeholder="Select country"
+                  searchPlaceholder="Search..."
+                  onChange={(e) => {
+                    setCountry(e.value);
                   }}
                   renderRightIcon={() => (
                     <Entypo name="chevron-down" size={11} color={theme.white} />
@@ -253,6 +273,31 @@ let styles = StyleSheet.create({
     color: theme.black,
     fontSize: 15,
     fontFamily: theme.blackFont,
+  },
+  //
+  dropdown: {
+    width: "50%",
+  },
+  imageStyle: {
+    width: 20,
+    height: 20,
+    marginRight:10
+  },
+  placeholderStyle: {
+    fontSize: 12,
+    color: theme.white,
+    fontFamily: theme.semiBold,
+    paddingLeft: 5,
+  },
+  selectedTextStyle: {
+    fontSize: 12,
+    color: theme.black,
+    fontFamily: theme.semiBold,
+    paddingLeft: 5,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
   },
 });
 export default Exchange;
