@@ -77,7 +77,6 @@ let styles = StyleSheet.create({
     backgroundColor: theme.black,
   },
   containerInnner: {
-    display: "flex",
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",

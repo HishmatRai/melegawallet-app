@@ -84,14 +84,16 @@ const Dashboard = (props) => {
             >
               <View style={styles.bannerInner}>
                 <Text style={styles.bannerText}>
-                  “Hey Bro Join The Telegram Airdrops!”
+                  “Hey Bro!.{"\n"} Join The{"\n"}Telegram{"\n"}Airdrops!”
                 </Text>
-                <WithLocalSvg
-                  asset={require("./../../../assets/svg/logo.svg")}
-                  width={40}
-                  height={40}
-                  fill={"#000"}
-                />
+                <View style={styles.bannerIcon}>
+                  <WithLocalSvg
+                    asset={require("./../../../assets/svg/logo.svg")}
+                    width={27}
+                    height={27}
+                    fill={"#000"}
+                  />
+                </View>
               </View>
             </ImageBackground>
           </TouchableOpacity>
@@ -290,24 +292,21 @@ let styles = StyleSheet.create({
   banner: {
     height: 168,
     borderRadius: 13,
-    position: "relative",
   },
   bannerInner: {
     flex: 1,
-    position: "absolute",
-    right: 20,
-    height: "100%",
-    paddingVertical: 20,
-    width: 136,
-    alignItems: "center",
-    justifyContent: "center",
-    alignSelf: "center",
+    alignSelf: "flex-end",
+    margin: 15,
   },
   bannerText: {
     fontSize: 19,
     color: theme.black,
     fontFamily: theme.cavolini,
-    marginBottom: 5,
+  },
+  bannerIcon: {
+    alignSelf: "flex-end",
+    marginTop:10,
+    marginRight:5
   },
 });
 export default Dashboard;
