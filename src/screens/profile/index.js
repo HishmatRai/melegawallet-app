@@ -15,7 +15,7 @@ const Profile = (props) => {
     {
       icon: require("./../../../assets/svg/address-book.svg"),
       title: "Addresss Book",
-      path: "AddressBook",
+      path: "AddressBookSearch",
     },
     {
       icon: require("./../../../assets/svg/wallet.svg"),

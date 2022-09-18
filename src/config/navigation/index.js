@@ -27,8 +27,16 @@ import {
   Send,
   DashboardStack,
   Liquidity,
+  Exchange,
+  Receive,
 } from "./../../screens";
-import { View, StyleSheet, Dimensions, Text } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Dimensions,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import {
   Ionicons,
   FontAwesome5,
@@ -40,7 +48,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const width = Dimensions.get("window").width;
 const tabWidth = width / 5;
-const TabStack = (props) => {
+const TabStack = ({navigation}) => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -91,8 +99,8 @@ const TabStack = (props) => {
         }}
       />
       <Tab.Screen
-        name="Dastrhboard1"
-        component={DashboardStack}
+        name="Receive"
+        component={Receive}
         options={{
           tabBarShowLabel: false,
           headerShown: false,
@@ -114,6 +122,12 @@ const TabStack = (props) => {
         options={{
           tabBarShowLabel: false,
           headerShown: false,
+          tabBarButton: (props) => (
+            <TouchableOpacity
+              {...props}
+              onPress={() => navigation.navigate("Exchange")}
+            />
+          ),
           tabBarIcon: ({ focused }) => (
             <View style={styles.tab}>
               {focused ? (
@@ -163,7 +177,7 @@ const TabStack = (props) => {
     </Tab.Navigator>
   );
 };
-let Navigation = () => {
+let Navigation = (props) => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -357,9 +371,19 @@ let Navigation = () => {
             animation: "slide_from_right",
           }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="Liquidity"
           component={Liquidity}
+          options={{
+            headerShown: false,
+            presentation: "card",
+            animationTypeForReplace: "pop",
+            animation: "slide_from_right",
+          }}
+        />
+        <Stack.Screen
+          name="Exchange"
+          component={Exchange}
           options={{
             headerShown: false,
             presentation: "card",

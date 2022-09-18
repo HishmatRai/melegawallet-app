@@ -10,6 +10,7 @@ import {
 import theme from "./../../../theme";
 import { WithLocalSvg } from "react-native-svg";
 const AddressBook = (props) => {
+  let propsData = props.route.params;
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   return (
@@ -42,7 +43,7 @@ const AddressBook = (props) => {
           style={styles.button}
           onPress={() => props.navigation.navigate("AddressBookSearch")}
         >
-          <Text style={styles.address}>Address</Text>
+          <Text style={styles.address}>{propsData}</Text>
         </TouchableOpacity>
         <TextInput
           style={styles.input}
@@ -94,7 +95,7 @@ let styles = StyleSheet.create({
   },
   button: {
     backgroundColor: theme.secondary,
-    height: 68,
+    minHeight: 68,
     borderRadius: 5,
     marginTop: 10,
     paddingHorizontal: 15,

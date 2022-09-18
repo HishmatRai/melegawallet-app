@@ -12,7 +12,7 @@ import theme from "../../../theme";
 import { WithLocalSvg } from "react-native-svg";
 import { Dropdown } from "react-native-element-dropdown";
 import { Entypo } from "@expo/vector-icons";
-const Liquidity = (props) => {
+const Exchange = (props) => {
   const [price, setPrice] = useState("");
   let [priceCurrency, setPriceCurrency] = useState("");
   const [price2, setPrice2] = useState("");
@@ -48,7 +48,7 @@ const Liquidity = (props) => {
           <View style={styles.card}>
             <View style={styles.cardHeader}>
               <View>
-                <Text style={styles.cardHeading}>Add Liquidity</Text>
+                <Text style={styles.cardHeading}>Exchange</Text>
                 <Text style={styles.cardSubHeading}>
                   Add liquidity to receive LP tokens
                 </Text>
@@ -251,4 +251,4 @@ let styles = StyleSheet.create({
     fontFamily: theme.blackFont,
   },
 });
-export default Liquidity;
+export default Exchange;

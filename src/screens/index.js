@@ -21,6 +21,8 @@ import FlexibleMining from "./flexible-mining";
 import Send from "./send";
 import DashboardStack from "./dashboard-stack";
 import Liquidity from "./liquidity";
+import Exchange from "./exchange";
+import Receive from "./receive";
 export {
   Select,
   CreateWallet,
@@ -44,5 +46,7 @@ export {
   FlexibleMining,
   Send,
   DashboardStack,
-  Liquidity
+  Liquidity,
+  Exchange,
+  Receive
 };

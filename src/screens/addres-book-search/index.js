@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   View,
@@ -6,12 +6,78 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
+  ScrollView,
+  FlatList,
 } from "react-native";
 import theme from "./../../../theme";
 import { WithLocalSvg } from "react-native-svg";
 import { Ionicons } from "@expo/vector-icons";
 const AddressBookSearch = (props) => {
   const [search, setSearch] = useState("");
+  const [filteredDataSource, setFilteredDataSource] = useState([]);
+  const [masterDataSource, setMasterDataSource] = useState([]);
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => response.json())
+      .then((responseJson) => {
+        setFilteredDataSource(responseJson);
+        setMasterDataSource(responseJson);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const searchFilterFunction = (text) => {
+    // Check if searched text is not blank
+    if (text) {
+      // Inserted text is not blank
+      // Filter the masterDataSource
+      // Update FilteredDataSource
+      const newData = masterDataSource.filter(function (item) {
+        const itemData = item.title
+          ? item.title.toUpperCase()
+          : "".toUpperCase();
+        const textData = text.toUpperCase();
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilteredDataSource(newData);
+      setSearch(text);
+    } else {
+      // Inserted text is blank
+      // Update FilteredDataSource with masterDataSource
+      setFilteredDataSource(masterDataSource);
+      setSearch(text);
+    }
+  };
+
+  const ItemView = ({ item }) => {
+    return (
+      // Flat List Item
+      <TouchableOpacity
+        style={{ paddingVertical: 10 }}
+        onPress={() => props.navigation.navigate("AddressBook",item.title)}
+      >
+        <Text
+          style={styles.itemStyle}
+          // onPress={() => getItem(item)}
+        >
+          {item.title}
+        </Text>
+      </TouchableOpacity>
+    );
+  };
+  const ItemSeparatorView = () => {
+    return (
+      // Flat List Item Separator
+      <View />
+    );
+  };
+
+  const getItem = (item) => {
+    // Function for click on an item
+    alert("Id : " + item.id + " Title : " + item.title);
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.containerInnner}>
@@ -37,18 +103,29 @@ const AddressBookSearch = (props) => {
             placeholder="Search"
             placeholderTextColor={theme.white}
             value={search}
-            onChangeText={(search) => setSearch(search)}
+            onChangeText={(search) => searchFilterFunction(search)}
           />
         </View>
-        <View style={styles.body}>
-          <WithLocalSvg
-            asset={require("./../../../assets/svg/no-data.svg")}
-            width={169}
-            height={169}
-            fill={"#000"}
-          />
-          <Text style={styles.noData}>Nothing to show</Text>
-        </View>
+        {search === "" ? (
+          <View style={styles.body}>
+            <WithLocalSvg
+              asset={require("./../../../assets/svg/no-data.svg")}
+              width={169}
+              height={169}
+              fill={"#000"}
+            />
+            <Text style={styles.noData}>Nothing to show</Text>
+          </View>
+        ) : (
+          <View style={styles.searchList}>
+            <FlatList
+              data={filteredDataSource}
+              keyExtractor={(item, index) => index.toString()}
+              ItemSeparatorComponent={ItemSeparatorView}
+              renderItem={ItemView}
+            />
+          </View>
+        )}
       </View>
     </SafeAreaView>
   );
@@ -107,6 +184,16 @@ let styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: theme.bold,
     marginTop: 10,
+  },
+  itemStyle: {
+    // padding: 10,
+    color: theme.white,
+    fontSize: 15,
+    fontFamily: theme.medium,
+    textTransform: "capitalize",
+  },
+  searchList: {
+    marginTop: 20,
   },
 });
 export default AddressBookSearch;

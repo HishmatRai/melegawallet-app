@@ -21,12 +21,12 @@ const Dashboard = (props) => {
     {
       icon: require("./../../../assets/svg/liquidity.svg"),
       title: "Liquidity",
-      path: "",
+      path: "Liquidity",
     },
     {
       icon: require("./../../../assets/svg/exchange.svg"),
       title: "Exchange",
-      path: "",
+      path: "Exchange",
     },
     {
       icon: require("./../../../assets/svg/yield-farming.svg"),

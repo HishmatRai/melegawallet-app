@@ -16,7 +16,7 @@ function DashboardStack() {
           animation: "slide_from_right",
         }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Receive"
         component={Receive}
         options={{
@@ -25,7 +25,7 @@ function DashboardStack() {
           animationTypeForReplace: "pop",
           animation: "slide_from_right",
         }}
-      />
+      /> */}
     </Stack.Navigator>
   );
 }

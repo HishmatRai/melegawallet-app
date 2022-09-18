@@ -45,9 +45,7 @@ const Wallet = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.containerInnner}>
-        <View>
-          
-        </View>
+        <View></View>
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: 20 }}
@@ -67,10 +65,13 @@ const Wallet = (props) => {
             </TouchableOpacity>
           </View>
           <View style={styles.headerButton}>
-            <TouchableOpacity style={styles.sendButton}>
+            <TouchableOpacity
+              style={styles.sendButton}
+              onPress={() => props.navigation.navigate("Send")}
+            >
               <Text style={styles.sendButtonText}>Send</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.receiveButton}>
+            <TouchableOpacity style={styles.receiveButton}  onPress={() => props.navigation.navigate("Receive")}>
               <Text style={styles.receiveButtonText}>Receive</Text>
             </TouchableOpacity>
           </View>
